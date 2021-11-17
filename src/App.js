@@ -9,33 +9,13 @@ import Modal from 'components/Modal';
 
 
 class App extends Component {
-  static defaultProps = {
-    initialShowModal: false,
-    initialPictureName: '',
-    initialLargeImageURL: '',
-    initialPage: 1,
-    initialStatus: 'idle',
-  };
-
-  static propTypes = {
-    initialShowModal: PropTypes.bool.isRequired,
-    initialPictureName: PropTypes.string.isRequired,
-    initialLargeImageURL: PropTypes.string.isRequired,
-    initialPage: PropTypes.number.isRequired,
-    initialStatus: PropTypes.oneOf([
-      'idle',
-      'pending',
-      'resolved',
-      'rejected',
-    ]),
-  };
 
   state = {
-    showModal: this.props.initialShowModal,
-    pictureName: this.props.initialPictureName,
-    largeImageURL: this.props.initialLargeImageURL,
-    page: this.props.initialPage,
-    status: this.props.initialStatus,
+    showModal: false,
+    pictureName: '',
+    largeImageURL: '',
+    page: 1,
+    status: 'idle',
   };
 
   onLoadMore = () => {
@@ -57,7 +37,7 @@ class App extends Component {
     this.setState({ pictureName });
   };
 
-  setStatus = status => this.setState({ status: status });
+  setStatus = status => this.setState({ status });
 
   render() {
     const {
@@ -102,5 +82,19 @@ class App extends Component {
     );
   }
 }
+
+
+App.propTypes = {
+    initialShowModal: PropTypes.bool.isRequired,
+    initialPictureName: PropTypes.string.isRequired,
+    initialLargeImageURL: PropTypes.string.isRequired,
+    initialPage: PropTypes.number.isRequired,
+    initialStatus: PropTypes.oneOf([
+      'idle',
+      'pending',
+      'resolved',
+      'rejected',
+    ]),
+  };
 
 export default App;

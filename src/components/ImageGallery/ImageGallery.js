@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import s from './ImageGallery.module.css';
 import ImageGalleryItem from 'components/ImageGalleryItem';
 import { toast } from 'react-toastify';
@@ -7,19 +7,11 @@ import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import fetchImages from '../API/ImageApi';
 
-export default class ImageGallery extends Component {
+ class ImageGallery extends Component {
   state = {
     pictures: null,
     status: 'idle',
   };
-
-//   static propTypes = {
-//     page: PropTypes.number.isRequired,
-//     pictureName: PropTypes.string.isRequired,
-//     setModalImage: PropTypes.func.isRequired,
-//     setStatus: PropTypes.func.isRequired,
-//     toggleModal: PropTypes.func.isRequired,
-//   };
 
   componentDidUpdate(prevProps, prevState) {
     const prevName = prevProps.pictureName;
@@ -111,3 +103,14 @@ export default class ImageGallery extends Component {
     }
   }
 }
+
+
+ImageGallery.propTypes = {
+    page: PropTypes.number.isRequired,
+    pictureName: PropTypes.string.isRequired,
+    setModalImage: PropTypes.func.isRequired,
+    setStatus: PropTypes.func.isRequired,
+    toggleModal: PropTypes.func.isRequired,
+};
+  
+export default ImageGallery;
